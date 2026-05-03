@@ -1,0 +1,75 @@
+{
+  "title": "TiVo Content Item Structure",
+  "description": "Structural documentation for TiVo entertainment content metadata",
+  "type": "object",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string",
+      "description": "Unique TiVo content identifier",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "description": "Content title",
+      "required": true
+    },
+    {
+      "name": "type",
+      "type": "string (enum)",
+      "description": "Content classification: movie, series, episode, person, sport, program",
+      "required": true
+    },
+    {
+      "name": "year",
+      "type": "integer",
+      "description": "Release or premiere year"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": "Content synopsis"
+    },
+    {
+      "name": "genres",
+      "type": "array[string]",
+      "description": "Genre classifications"
+    },
+    {
+      "name": "rating",
+      "type": "string",
+      "description": "Content maturity rating (PG, R, TV-MA)"
+    },
+    {
+      "name": "runtime",
+      "type": "integer",
+      "description": "Duration in minutes"
+    },
+    {
+      "name": "languages",
+      "type": "array[string]",
+      "description": "Available language codes (ISO 639-1)"
+    },
+    {
+      "name": "cast",
+      "type": "array[CastMember]",
+      "description": "Cast and crew with roles and characters"
+    },
+    {
+      "name": "images",
+      "type": "array[Image]",
+      "description": "Posters, backdrops, stills, and logos"
+    },
+    {
+      "name": "externalIds",
+      "type": "object",
+      "description": "Cross-reference identifiers: rovi, rovi2, tmdb, eidr"
+    },
+    {
+      "name": "availableOn",
+      "type": "array[string]",
+      "description": "Streaming platform availability list"
+    }
+  ]
+}

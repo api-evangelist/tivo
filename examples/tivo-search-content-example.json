@@ -1,0 +1,46 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://data.tivo.com/v3/content/search?q=Breaking+Bad&type=series&limit=5",
+    "headers": {
+      "Authorization": "Bearer your_tivo_api_token"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "results": [
+        {
+          "id": "SH011955130000",
+          "title": "Breaking Bad",
+          "type": "series",
+          "year": 2008,
+          "description": "A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family's future.",
+          "genres": ["Drama", "Crime", "Thriller"],
+          "rating": "TV-MA",
+          "languages": ["en"],
+          "externalIds": {
+            "rovi": "8661195",
+            "tmdb": "1396",
+            "eidr": "10.5240/1489-A52C-3E58-D0B1-C79B-F"
+          },
+          "images": [
+            {
+              "url": "https://images.tivo.com/image/entertainment/v1/2609/series/SH011955130000/poster.jpg",
+              "type": "poster",
+              "width": 1000,
+              "height": 1500,
+              "language": "en"
+            }
+          ]
+        }
+      ],
+      "total": 1,
+      "offset": 0,
+      "limit": 5
+    }
+  }
+}

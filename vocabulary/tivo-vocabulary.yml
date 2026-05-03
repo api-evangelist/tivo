@@ -1,0 +1,172 @@
+vocabulary:
+  name: TiVo Vocabulary
+  description: >-
+    Vocabulary and taxonomy for TiVo entertainment metadata services covering
+    video content, music, identifiers, imaging, and API concepts.
+  version: '1.0'
+  created: '2026-05-03'
+  modified: '2026-05-03'
+
+terms:
+  - term: Content Item
+    definition: >-
+      Any piece of entertainment media in the TiVo metadata system, including
+      movies, TV series, episodes, specials, sports events, and programs.
+    tags:
+      - Core Concept
+      - Metadata
+
+  - term: Video Metadata API
+    definition: >-
+      The TiVo HTTP-based API v3 that provides JSON metadata for TV shows,
+      movies, episodes, and other video content including imagery, cast,
+      and cross-reference identifiers.
+    tags:
+      - API
+      - Video
+
+  - term: Music Metadata API
+    definition: >-
+      The TiVo HTTP-based API that provides JSON metadata for music artists,
+      albums, tracks, and music imagery.
+    tags:
+      - API
+      - Music
+
+  - term: Content Search
+    definition: >-
+      An API operation that accepts flexible metadata field inputs (title,
+      genre, year, person) and returns matching content items. Used when
+      no known identifier is available.
+    tags:
+      - Discovery
+      - Search
+
+  - term: ID Lookup
+    definition: >-
+      An API operation that returns full metadata for a specific content item
+      identified by a known external identifier such as Rovi, TMDB, or EIDR.
+    tags:
+      - Retrieval
+      - Precision Query
+
+  - term: Rovi Identifier
+    definition: >-
+      A legacy content identifier from the Rovi (formerly All Media Guide) data
+      catalog, supported in version 1.1 and 2.0 formats by the TiVo API.
+    aliases:
+      - Rovi 1.1
+      - Rovi 2.0
+    tags:
+      - Identifier
+      - Legacy
+
+  - term: TMDB Identifier
+    definition: >-
+      A The Movie Database (TMDB) content identifier used for cross-referencing
+      TiVo metadata with the open TMDB catalog.
+    tags:
+      - Identifier
+      - Cross-Reference
+
+  - term: EIDR
+    definition: >-
+      Entertainment Identifier Registry identifier, a universal unique identifier
+      for movie and TV content defined by the EIDR standards body.
+    aliases:
+      - Entertainment Identifier Registry
+    tags:
+      - Identifier
+      - Standard
+
+  - term: Metadata Package
+    definition: >-
+      A bundle of related metadata fields delivered together for a content item,
+      configurable via the TiVo API include parameter to control data breadth.
+    tags:
+      - API
+      - Configuration
+
+  - term: Poster
+    definition: >-
+      A vertically-oriented promotional image for a movie or TV show, typically
+      the primary image type used for content display in UI applications.
+    tags:
+      - Image
+      - Asset
+
+  - term: Backdrop
+    definition: >-
+      A wide-format background image for a movie or TV show used for hero
+      banners and background visuals in entertainment applications.
+    tags:
+      - Image
+      - Asset
+
+  - term: EPG
+    definition: >-
+      Electronic Program Guide - a structured listing of broadcast and streaming
+      TV program schedules, enriched with TiVo metadata for channel guides.
+    aliases:
+      - Electronic Program Guide
+    tags:
+      - Broadcast
+      - Schedule
+
+  - term: FTP Delivery
+    definition: >-
+      An alternative to the API for bulk delivery of TiVo metadata, using FTP
+      to transfer large datasets for offline processing and integration.
+    tags:
+      - Delivery
+      - Bulk Data
+
+  - term: Smart TV
+    definition: >-
+      A television with built-in internet connectivity and a TiVo OS platform
+      that uses the TiVo metadata APIs for content discovery and display.
+    tags:
+      - Platform
+      - Device
+
+  - term: DTS AutoStage
+    definition: >-
+      TiVo's automotive entertainment platform that integrates TiVo metadata
+      for in-vehicle entertainment and content experiences.
+    tags:
+      - Platform
+      - Automotive
+
+  - term: IPTV
+    definition: >-
+      Internet Protocol Television - a digital television service delivered
+      over IP networks using TiVo metadata APIs for program guide enrichment.
+    aliases:
+      - Internet Protocol Television
+    tags:
+      - Platform
+      - Broadcasting
+
+  - term: Cast Member
+    definition: >-
+      A person credited in a content item with a specific role (actor, director,
+      writer, producer, composer) and optional character name.
+    tags:
+      - Person
+      - Credits
+
+  - term: Season
+    definition: >-
+      A numbered grouping of TV series episodes from a single broadcast year,
+      containing episode counts and season-level metadata.
+    tags:
+      - TV Series
+      - Structure
+
+  - term: Episode
+    definition: >-
+      An individual installment of a TV series identified by season and episode
+      numbers, with air date, title, description, and runtime metadata.
+    tags:
+      - TV Series
+      - Content Item

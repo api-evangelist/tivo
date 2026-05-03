@@ -1,0 +1,221 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "TiVo Entertainment Metadata"
+  description: >-
+    Workflow capability for entertainment content discovery and metadata enrichment
+    using TiVo's Video Metadata API. Combines content search, ID-based lookup,
+    imagery retrieval, and episode data for streaming platforms, smart TV applications,
+    IPTV providers, and content recommendation systems.
+  tags:
+    - Entertainment
+    - Metadata
+    - Television
+    - Movies
+    - Streaming
+    - Content Discovery
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      TIVO_API_TOKEN: TIVO_API_TOKEN
+
+capability:
+  consumes:
+    - import: tivo-video
+      location: ./shared/tivo-video-metadata.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: tivo-entertainment-api
+      description: "Unified REST API for TiVo entertainment content discovery and metadata."
+      resources:
+        - path: /v1/content/search
+          name: content-search
+          description: "Search entertainment content by flexible metadata fields"
+          operations:
+            - method: GET
+              name: search-content
+              description: "Search for movies, TV shows, and other entertainment content"
+              call: "tivo-video.search-content"
+              with:
+                q: "rest.q"
+                type: "rest.type"
+                genre: "rest.genre"
+                year: "rest.year"
+                language: "rest.language"
+                limit: "rest.limit"
+                offset: "rest.offset"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/content/{contentId}
+          name: content
+          description: "Full metadata for a specific content item"
+          operations:
+            - method: GET
+              name: lookup-content-by-id
+              description: "Get complete metadata for a content item by ID"
+              call: "tivo-video.lookup-content-by-id"
+              with:
+                contentId: "rest.contentId"
+                idType: "rest.idType"
+                include: "rest.include"
+                language: "rest.language"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/content/{contentId}/images
+          name: content-images
+          description: "Entertainment imagery for a content item"
+          operations:
+            - method: GET
+              name: get-content-images
+              description: "Get posters, backdrops, and stills for a content item"
+              call: "tivo-video.get-content-images"
+              with:
+                contentId: "rest.contentId"
+                type: "rest.type"
+                width: "rest.width"
+                height: "rest.height"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/content/{contentId}/seasons
+          name: seasons
+          description: "Season listing for a TV series"
+          operations:
+            - method: GET
+              name: get-content-seasons
+              description: "Get all seasons for a TV series"
+              call: "tivo-video.get-content-seasons"
+              with:
+                contentId: "rest.contentId"
+                language: "rest.language"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/content/{contentId}/episodes
+          name: episodes
+          description: "Episode listing for a TV series"
+          operations:
+            - method: GET
+              name: get-content-episodes
+              description: "Get episodes for a TV series with optional season filter"
+              call: "tivo-video.get-content-episodes"
+              with:
+                contentId: "rest.contentId"
+                season: "rest.season"
+                limit: "rest.limit"
+                offset: "rest.offset"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/people/{personId}
+          name: people
+          description: "Person profiles and filmography"
+          operations:
+            - method: GET
+              name: lookup-person
+              description: "Get biography and credits for a cast or crew member"
+              call: "tivo-video.lookup-person"
+              with:
+                personId: "rest.personId"
+                include: "rest.include"
+                language: "rest.language"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: tivo-entertainment-mcp
+      transport: http
+      description: "MCP server for AI-assisted entertainment content discovery and metadata enrichment."
+      tools:
+        - name: search-content
+          description: "Search TiVo's entertainment catalog for movies, TV series, or episodes by title, genre, year, or type"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "tivo-video.search-content"
+          with:
+            q: "tools.q"
+            type: "tools.type"
+            genre: "tools.genre"
+            year: "tools.year"
+            language: "tools.language"
+            limit: "tools.limit"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: lookup-content-by-id
+          description: "Retrieve full TiVo metadata for a content item using its Rovi, TMDB, or EIDR identifier"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "tivo-video.lookup-content-by-id"
+          with:
+            contentId: "tools.contentId"
+            idType: "tools.idType"
+            include: "tools.include"
+            language: "tools.language"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-content-images
+          description: "Get posters, backdrops, stills, and promotional images for a TiVo content item"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "tivo-video.get-content-images"
+          with:
+            contentId: "tools.contentId"
+            type: "tools.type"
+            width: "tools.width"
+            height: "tools.height"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-content-seasons
+          description: "List all seasons of a TV series with episode counts and season metadata"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "tivo-video.get-content-seasons"
+          with:
+            contentId: "tools.contentId"
+            language: "tools.language"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-content-episodes
+          description: "List TV series episodes with air dates, titles, and descriptions, optionally filtered by season"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "tivo-video.get-content-episodes"
+          with:
+            contentId: "tools.contentId"
+            season: "tools.season"
+            limit: "tools.limit"
+            offset: "tools.offset"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: lookup-person
+          description: "Get biography, birth information, filmography credits, and images for an actor, director, or writer"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "tivo-video.lookup-person"
+          with:
+            personId: "tools.personId"
+            include: "tools.include"
+            language: "tools.language"
+          outputParameters:
+            - type: object
+              mapping: "$."

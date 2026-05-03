@@ -1,0 +1,144 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/tivo/main/json-schema/tivo-content-schema.json",
+  "title": "TiVo Content Item",
+  "description": "Schema for a TiVo entertainment content item representing a movie, TV series, episode, or other media",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique TiVo content identifier"
+    },
+    "title": {
+      "type": "string",
+      "description": "Content title"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["movie", "series", "episode", "person", "sport", "program"],
+      "description": "Content type classification"
+    },
+    "year": {
+      "type": "integer",
+      "minimum": 1888,
+      "description": "Release or premiere year"
+    },
+    "description": {
+      "type": "string",
+      "description": "Content synopsis or description"
+    },
+    "genres": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of genres for the content"
+    },
+    "rating": {
+      "type": "string",
+      "description": "Content rating (PG, R, TV-MA, etc.)"
+    },
+    "runtime": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Runtime in minutes"
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Available languages (ISO 639-1 codes)"
+    },
+    "cast": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CastMember"
+      },
+      "description": "Cast and crew members"
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Image"
+      },
+      "description": "Available images for the content"
+    },
+    "externalIds": {
+      "type": "object",
+      "description": "External identifier mappings",
+      "properties": {
+        "rovi": {
+          "type": "string",
+          "description": "Rovi 1.1 identifier"
+        },
+        "rovi2": {
+          "type": "string",
+          "description": "Rovi 2.0 identifier"
+        },
+        "tmdb": {
+          "type": "string",
+          "description": "The Movie Database (TMDB) identifier"
+        },
+        "eidr": {
+          "type": "string",
+          "description": "Entertainment Identifier Registry (EIDR) identifier"
+        }
+      }
+    },
+    "availableOn": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Streaming platforms where this content is available"
+    }
+  },
+  "required": ["id", "title", "type"],
+  "definitions": {
+    "CastMember": {
+      "type": "object",
+      "properties": {
+        "personId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["actor", "director", "writer", "producer", "composer"]
+        },
+        "character": {
+          "type": "string"
+        }
+      },
+      "required": ["personId", "name", "role"]
+    },
+    "Image": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["poster", "backdrop", "still", "headshot", "logo"]
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "language": {
+          "type": "string"
+        }
+      },
+      "required": ["url", "type"]
+    }
+  }
+}

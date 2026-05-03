@@ -1,0 +1,126 @@
+extends: spectral:oas
+rules:
+
+  tivo-operation-ids-required:
+    description: All operations must have operationId values
+    message: Operation must have an operationId
+    severity: error
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: operationId
+      function: defined
+
+  tivo-operation-summaries-required:
+    description: All operations must have a summary
+    message: Operation must have a summary
+    severity: error
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: summary
+      function: defined
+
+  tivo-operation-tags-required:
+    description: All operations must have at least one tag
+    message: Operation must have at least one tag for grouping
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: tags
+      function: defined
+
+  tivo-versioned-paths:
+    description: All paths must begin with /v3/ for the Video Metadata API
+    message: Path {{value}} must begin with /v3/
+    severity: error
+    given: $.paths
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/v3/"
+
+  tivo-bearer-auth-required:
+    description: API must define bearer token authentication
+    message: Security scheme bearerAuth must be defined
+    severity: error
+    given: $.components.securitySchemes.bearerAuth
+    then:
+      function: defined
+
+  tivo-response-200-defined:
+    description: All GET operations must define a 200 success response
+    message: GET operation must have a 200 response defined
+    severity: error
+    given: $.paths[*].get
+    then:
+      field: responses.200
+      function: defined
+
+  tivo-response-401-defined:
+    description: All operations must handle unauthorized responses
+    message: Operation must define a 401 unauthorized response
+    severity: warn
+    given: $.paths[*][get,post]
+    then:
+      field: responses.401
+      function: defined
+
+  tivo-response-404-defined:
+    description: Resource lookup operations must handle not found responses
+    message: Operations with path parameters must define 404 not found response
+    severity: warn
+    given: $.paths[*~contains('{')][get]
+    then:
+      field: responses.404
+      function: defined
+
+  tivo-kebab-case-paths:
+    description: Path segments must use kebab-case
+    message: Path segment must use kebab-case lowercase with hyphens
+    severity: warn
+    given: $.paths
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(/v[0-9]+/[a-z][a-z0-9-]*(/\\{[a-zA-Z]+\\})?(/[a-z][a-z0-9-]*)?)*$"
+
+  tivo-content-type-json:
+    description: Response schemas must use application/json content type
+    message: Response content type must be application/json
+    severity: warn
+    given: $.paths[*][*].responses[*].content
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          properties:
+            application/json:
+              type: object
+
+  tivo-schemas-have-descriptions:
+    description: All schema objects should have descriptions
+    message: Schema must include a description
+    severity: hint
+    given: $.components.schemas[*]
+    then:
+      field: description
+      function: defined
+
+  tivo-servers-defined:
+    description: API must define at least one server URL
+    message: API must have servers defined
+    severity: error
+    given: $
+    then:
+      field: servers
+      function: defined
+
+  tivo-info-version-semver:
+    description: API version should follow semantic versioning
+    message: info.version should use a versioned format like v3
+    severity: hint
+    given: $.info.version
+    then:
+      function: pattern
+      functionOptions:
+        match: "^v[0-9]+"

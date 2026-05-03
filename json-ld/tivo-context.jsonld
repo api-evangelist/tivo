@@ -1,0 +1,69 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "tivo": "https://business.tivo.com/vocab/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Movie": "schema:Movie",
+    "TVSeries": "schema:TVSeries",
+    "TVEpisode": "schema:TVEpisode",
+    "TVSeason": "schema:TVSeason",
+    "Person": "schema:Person",
+    "MusicGroup": "schema:MusicGroup",
+    "ContentItem": "tivo:ContentItem",
+    "Image": "schema:ImageObject",
+
+    "id": "@id",
+    "title": "schema:name",
+    "description": "schema:description",
+    "year": {
+      "@id": "schema:datePublished",
+      "@type": "xsd:gYear"
+    },
+    "genres": "schema:genre",
+    "rating": "schema:contentRating",
+    "runtime": {
+      "@id": "schema:duration",
+      "@type": "xsd:integer"
+    },
+    "languages": "schema:availableLanguage",
+
+    "cast": "schema:actor",
+    "personId": "@id",
+    "name": "schema:name",
+    "role": "schema:roleName",
+    "character": "schema:characterName",
+
+    "images": "schema:image",
+    "url": "schema:url",
+    "imageType": "schema:additionalType",
+    "width": "schema:width",
+    "height": "schema:height",
+    "language": "schema:inLanguage",
+
+    "externalIds": "schema:identifier",
+    "rovi": "tivo:roviId",
+    "rovi2": "tivo:roviId2",
+    "tmdb": "tivo:tmdbId",
+    "eidr": "tivo:eidrId",
+
+    "availableOn": "schema:availableOn",
+
+    "seasonNumber": "schema:seasonNumber",
+    "episodeNumber": "schema:episodeNumber",
+    "airDate": {
+      "@id": "schema:datePublished",
+      "@type": "xsd:date"
+    },
+    "episodeCount": "schema:numberOfEpisodes",
+
+    "biography": "schema:description",
+    "birthDate": {
+      "@id": "schema:birthDate",
+      "@type": "xsd:date"
+    },
+    "birthPlace": "schema:birthPlace",
+    "credits": "schema:performerIn"
+  }
+}
