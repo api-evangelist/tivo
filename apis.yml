@@ -128,7 +128,7 @@ common:
   - type: NaftikoCapability
     url: >-
       https://raw.githubusercontent.com/api-evangelist/tivo/refs/heads/main/capabilities/entertainment-metadata.yaml
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/tivo
 maintainers:
   - FN: Kin Lane
