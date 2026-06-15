@@ -1,0 +1,252 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TiVo Video Metadata API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Content",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.tivo.com/v3/content/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query text - title, person name, or keyword"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Content type filter"
+              },
+              {
+                "name": "genre",
+                "value": "",
+                "type": "query",
+                "description": "Genre filter"
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "Release year filter"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language code (ISO 639-1)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of additional fields to include"
+              }
+            ]
+          },
+          "docs": "Search for entertainment content using a variety of metadata fields. Returns matching TV shows, movies, episodes, and other content assets. Use this endpoint when you don't have a known identifier for the content."
+        },
+        {
+          "info": {
+            "name": "Get Content Images",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.tivo.com/v3/content/:contentId/images",
+            "params": [
+              {
+                "name": "contentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Image type filter"
+              },
+              {
+                "name": "width",
+                "value": "",
+                "type": "query",
+                "description": "Preferred image width in pixels"
+              },
+              {
+                "name": "height",
+                "value": "",
+                "type": "query",
+                "description": "Preferred image height in pixels"
+              }
+            ]
+          },
+          "docs": "Retrieve high-quality entertainment imagery for a specific content item including posters, backdrops, cast photos, and promotional images."
+        },
+        {
+          "info": {
+            "name": "Get Content Seasons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.tivo.com/v3/content/:contentId/seasons",
+            "params": [
+              {
+                "name": "contentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve season information for a TV series including episode counts and season-level metadata."
+        },
+        {
+          "info": {
+            "name": "Get Content Episodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.tivo.com/v3/content/:contentId/episodes",
+            "params": [
+              {
+                "name": "contentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "season",
+                "value": "",
+                "type": "query",
+                "description": "Season number to filter episodes"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve episode listings for a TV series or specific season with episode metadata, air dates, and descriptions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Lookup",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lookup Content By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.tivo.com/v3/content/:contentId",
+            "params": [
+              {
+                "name": "contentId",
+                "value": "",
+                "type": "path",
+                "description": "Content identifier (Rovi, TMDB, or EIDR format)"
+              },
+              {
+                "name": "idType",
+                "value": "",
+                "type": "query",
+                "description": "Type of the provided identifier"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of additional fields to include"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language code for localized metadata (ISO 639-1)"
+              }
+            ]
+          },
+          "docs": "Retrieve detailed metadata for a specific content item using a known identifier. Supports Rovi 1.1, Rovi 2.0, TMDB, and EIDR identifiers. Use this endpoint when you have a precise content identifier and need full metadata."
+        },
+        {
+          "info": {
+            "name": "Lookup Person",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.tivo.com/v3/people/:personId",
+            "params": [
+              {
+                "name": "personId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Additional fields to include (credits, images, biography)"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve detailed information about a person (actor, director, writer, etc.) including biography, filmography, and images."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
