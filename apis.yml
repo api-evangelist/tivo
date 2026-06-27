@@ -39,7 +39,7 @@ apis:
         url: https://tivo.stoplight.io/docs/video-metadata-api-v3/ZG9jOjQ3NjAxNTk-introduction
       - type: OpenAPI
         url: https://raw.githubusercontent.com/api-evangelist/tivo/refs/heads/main/openapi/tivo-video-metadata-openapi.yml
-      - type: Developer Portal
+      - type: DeveloperPortal
         url: https://developers.tivo.com/
       - type: JSONSchema
         url: https://raw.githubusercontent.com/api-evangelist/tivo/refs/heads/main/json-schema/tivo-content-schema.json
@@ -64,7 +64,7 @@ apis:
     properties:
       - type: Documentation
         url: https://tivo.stoplight.io/docs/music-metadata-api/ZG9jOjQ3NjAxNTk-introduction
-      - type: Developer Portal
+      - type: DeveloperPortal
         url: https://developers.tivo.com/metadata/
 features:
   - Content search by multiple metadata fields
@@ -102,7 +102,7 @@ common:
     url: https://business.tivo.com/
   - type: Documentation
     url: https://business.tivo.com/products-solutions/metadata/tv-movie-metadata-api
-  - type: Developer Portal
+  - type: DeveloperPortal
     url: https://developers.tivo.com/
   - type: OpenAPI
     url: https://raw.githubusercontent.com/api-evangelist/tivo/refs/heads/main/openapi/tivo-video-metadata-openapi.yml
