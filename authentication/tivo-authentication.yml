@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/tivo-video-metadata-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: TiVo API authentication token
+  sources:
+  - openapi/tivo-video-metadata-openapi.yml

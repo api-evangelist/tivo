@@ -96,6 +96,10 @@ solutions:
   - Smart TV application development
   - Automotive in-car entertainment
 common:
+  - type: DomainSecurity
+    url: security/tivo-domain-security.yml
+  - type: Authentication
+    url: authentication/tivo-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/tivo
   - type: Website
