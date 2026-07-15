@@ -96,6 +96,8 @@ solutions:
   - Smart TV application development
   - Automotive in-car entertainment
 common:
+  - type: AgenticAccess
+    url: agentic-access/tivo-agentic-access.yml
   - type: DomainSecurity
     url: security/tivo-domain-security.yml
   - type: Authentication
