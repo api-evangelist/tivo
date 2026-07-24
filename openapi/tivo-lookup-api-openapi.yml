@@ -1,0 +1,254 @@
+openapi: 3.0.3
+info:
+  title: TiVo Video Metadata Content Lookup API
+  description: The TiVo Video Metadata API v3 provides access to a universe of high-quality entertainment imagery and information. The HTTP-based API delivers JSON responses for TV shows, movies, episodes, and related entertainment content. Supports content search by metadata fields and precise ID-based lookup using Rovi, TMDB, and EIDR identifiers.
+  version: v3
+  contact:
+    name: TiVo Developer Support
+    url: https://developers.tivo.com
+  x-logo:
+    url: https://business.tivo.com/logo.png
+servers:
+- url: https://data.tivo.com
+  description: TiVo Video Metadata API
+security:
+- bearerAuth: []
+tags:
+- name: Lookup
+  description: Look up content by known identifiers
+paths:
+  /v3/content/{contentId}:
+    get:
+      operationId: lookupContentById
+      summary: Lookup Content By ID
+      description: Retrieve detailed metadata for a specific content item using a known identifier. Supports Rovi 1.1, Rovi 2.0, TMDB, and EIDR identifiers. Use this endpoint when you have a precise content identifier and need full metadata.
+      tags:
+      - Lookup
+      parameters:
+      - name: contentId
+        in: path
+        required: true
+        description: Content identifier (Rovi, TMDB, or EIDR format)
+        schema:
+          type: string
+      - name: idType
+        in: query
+        description: Type of the provided identifier
+        schema:
+          type: string
+          enum:
+          - rovi
+          - rovi2
+          - tmdb
+          - eidr
+      - name: include
+        in: query
+        description: Comma-separated list of additional fields to include
+        schema:
+          type: string
+      - name: language
+        in: query
+        description: Language code for localized metadata (ISO 639-1)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Detailed content metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentItem'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /v3/people/{personId}:
+    get:
+      operationId: lookupPerson
+      summary: Lookup Person
+      description: Retrieve detailed information about a person (actor, director, writer, etc.) including biography, filmography, and images.
+      tags:
+      - Lookup
+      parameters:
+      - name: personId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: include
+        in: query
+        description: Additional fields to include (credits, images, biography)
+        schema:
+          type: string
+      - name: language
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Person details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or missing token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Content not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+        type:
+          type: string
+          enum:
+          - poster
+          - backdrop
+          - still
+          - headshot
+          - logo
+        width:
+          type: integer
+        height:
+          type: integer
+        language:
+          type: string
+    CastMember:
+      type: object
+      properties:
+        personId:
+          type: string
+        name:
+          type: string
+        role:
+          type: string
+          enum:
+          - actor
+          - director
+          - writer
+          - producer
+          - composer
+        character:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        code:
+          type: integer
+    Person:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        biography:
+          type: string
+        birthDate:
+          type: string
+          format: date
+        deathDate:
+          type: string
+          format: date
+        birthPlace:
+          type: string
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+        credits:
+          type: array
+          items:
+            type: object
+            properties:
+              contentId:
+                type: string
+              title:
+                type: string
+              role:
+                type: string
+              character:
+                type: string
+    ContentItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique content identifier
+        title:
+          type: string
+          description: Content title
+        type:
+          type: string
+          description: Content type (movie, series, episode)
+          enum:
+          - movie
+          - series
+          - episode
+          - person
+          - sport
+          - program
+        year:
+          type: integer
+          description: Release or premiere year
+        description:
+          type: string
+          description: Content synopsis or description
+        genres:
+          type: array
+          items:
+            type: string
+        rating:
+          type: string
+          description: Content rating (PG, R, TV-MA, etc.)
+        runtime:
+          type: integer
+          description: Runtime in minutes
+        languages:
+          type: array
+          items:
+            type: string
+        cast:
+          type: array
+          items:
+            $ref: '#/components/schemas/CastMember'
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+        externalIds:
+          type: object
+          properties:
+            rovi:
+              type: string
+            tmdb:
+              type: string
+            eidr:
+              type: string
+        availableOn:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: TiVo API authentication token
