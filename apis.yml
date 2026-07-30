@@ -5,9 +5,22 @@ description: >-
   offers Video Metadata API and Music Metadata API delivering TV, movie, and music content data for streaming platforms,
   smart TVs, IPTV systems, and entertainment applications.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/tivo.png
 tags:
   - Entertainment
   - Metadata
@@ -20,52 +33,74 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/tivo/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: tivo:tivo-video-metadata
-    name: TiVo Video Metadata API
-    description: >-
-      The TiVo Video Metadata API v3 provides access to high-quality entertainment imagery and information for TV shows,
-      movies, and episodes. Supports content search by metadata fields and precise ID-based lookup using Rovi 1.1, Rovi
-      2.0, TMDB, and EIDR identifiers. Returns JSON responses for reliable, scalable entertainment experiences.
-    humanURL: https://business.tivo.com/products-solutions/metadata/tv-movie-metadata-api
-    baseURL: https://data.tivo.com
-    tags:
-      - Entertainment
-      - Metadata
-      - Television
-      - Movies
-      - Streaming
-    properties:
-      - type: Documentation
-        url: https://tivo.stoplight.io/docs/video-metadata-api-v3/ZG9jOjQ3NjAxNTk-introduction
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/tivo/refs/heads/main/openapi/tivo-video-metadata-openapi.yml
-      - type: DeveloperPortal
-        url: https://developers.tivo.com/
-      - type: JSONSchema
-        url: https://raw.githubusercontent.com/api-evangelist/tivo/refs/heads/main/json-schema/tivo-content-schema.json
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/tivo/refs/heads/main/json-structure/tivo-content-structure.json
-      - type: JSONLDContext
-        url: https://raw.githubusercontent.com/api-evangelist/tivo/refs/heads/main/json-ld/tivo-context.jsonld
-      - type: SpectralRules
-        url: https://raw.githubusercontent.com/api-evangelist/tivo/refs/heads/main/rules/tivo-rules.yml
-  - aid: tivo:tivo-music-metadata
-    name: TiVo Music Metadata API
-    description: >-
-      The TiVo Music Metadata API provides access to high-quality music information including artist details, album
-      data, track information, and music imagery. Uses the same HTTP-based query structure and JSON response format as
-      the Video Metadata API v3.
-    humanURL: https://tivo.stoplight.io/docs/music-metadata-api/ZG9jOjQ3NjAxNTk-introduction
-    tags:
-      - Music
-      - Metadata
-      - Entertainment
-    properties:
-      - type: Documentation
-        url: https://tivo.stoplight.io/docs/music-metadata-api/ZG9jOjQ3NjAxNTk-introduction
-      - type: DeveloperPortal
-        url: https://developers.tivo.com/metadata/
+- aid: tivo:tivo-music-metadata
+  name: TiVo Music Metadata API
+  description: >-
+    The TiVo Music Metadata API provides access to high-quality music information including artist details,
+    album data, track information, and music imagery. Uses the same HTTP-based query structure and JSON
+    response format as the Video Metadata API v3.
+  humanURL: https://tivo.stoplight.io/docs/music-metadata-api/ZG9jOjQ3NjAxNTk-introduction
+  tags:
+  - Music
+  - Metadata
+  - Entertainment
+  properties:
+  - type: Documentation
+    url: https://tivo.stoplight.io/docs/music-metadata-api/ZG9jOjQ3NjAxNTk-introduction
+  - type: DeveloperPortal
+    url: https://developers.tivo.com/metadata/
+- aid: tivo:tivo-content-api
+  name: Tivo Content API
+  description: Search and retrieve entertainment content metadata
+  humanURL: https://business.tivo.com/products-solutions/metadata/tv-movie-metadata-api
+  baseURL: https://data.tivo.com
+  tags:
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/tivo-content-api-openapi.yml
+  - type: Documentation
+    url: https://tivo.stoplight.io/docs/video-metadata-api-v3/ZG9jOjQ3NjAxNTk-introduction
+  - type: DeveloperPortal
+    url: https://developers.tivo.com/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tivo/refs/heads/main/json-schema/tivo-content-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tivo/refs/heads/main/json-structure/tivo-content-structure.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tivo/refs/heads/main/json-ld/tivo-context.jsonld
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tivo/refs/heads/main/rules/tivo-rules.yml
+- aid: tivo:tivo-lookup-api
+  name: Tivo Lookup API
+  description: Look up content by known identifiers
+  humanURL: https://business.tivo.com/products-solutions/metadata/tv-movie-metadata-api
+  baseURL: https://data.tivo.com
+  tags:
+  - Lookup
+  properties:
+  - type: OpenAPI
+    url: openapi/tivo-lookup-api-openapi.yml
+  - type: Documentation
+    url: https://tivo.stoplight.io/docs/video-metadata-api-v3/ZG9jOjQ3NjAxNTk-introduction
+  - type: DeveloperPortal
+    url: https://developers.tivo.com/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tivo/refs/heads/main/json-schema/tivo-content-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tivo/refs/heads/main/json-structure/tivo-content-structure.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tivo/refs/heads/main/json-ld/tivo-context.jsonld
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/tivo/refs/heads/main/rules/tivo-rules.yml
 features:
   - Content search by multiple metadata fields
   - ID-based lookup for precise content retrieval
