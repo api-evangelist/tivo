@@ -1,0 +1,16 @@
+{
+  "provider": "tivo",
+  "sources": [
+    "tivo-content-api-openapi.yml",
+    "tivo-lookup-api-openapi.yml"
+  ],
+  "outputs": [
+    "tivo-content-api-openapi.yml",
+    "tivo-lookup-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
