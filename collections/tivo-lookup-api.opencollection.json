@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TiVo Video Metadata Content Lookup API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Lookup",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lookup Content By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.tivo.com/v3/content/:contentId",
+            "params": [
+              {
+                "name": "contentId",
+                "value": "",
+                "type": "path",
+                "description": "Content identifier (Rovi, TMDB, or EIDR format)"
+              },
+              {
+                "name": "idType",
+                "value": "",
+                "type": "query",
+                "description": "Type of the provided identifier"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of additional fields to include"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language code for localized metadata (ISO 639-1)"
+              }
+            ]
+          },
+          "docs": "Retrieve detailed metadata for a specific content item using a known identifier. Supports Rovi 1.1, Rovi 2.0, TMDB, and EIDR identifiers. Use this endpoint when you have a precise content identifier and need full metadata."
+        },
+        {
+          "info": {
+            "name": "Lookup Person",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.tivo.com/v3/people/:personId",
+            "params": [
+              {
+                "name": "personId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Additional fields to include (credits, images, biography)"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve detailed information about a person (actor, director, writer, etc.) including biography, filmography, and images."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

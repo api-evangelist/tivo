@@ -1,0 +1,484 @@
+{
+  "item": [
+    {
+      "id": "e38e9e91-9e08-4493-8c68-b233b047eb35",
+      "name": "Lookup",
+      "description": {
+        "content": "Look up content by known identifiers",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "08513051-e810-47e5-9420-78ebe6c7fcfe",
+          "name": "Lookup Content By ID",
+          "request": {
+            "name": "Lookup Content By ID",
+            "description": {
+              "content": "Retrieve detailed metadata for a specific content item using a known identifier. Supports Rovi 1.1, Rovi 2.0, TMDB, and EIDR identifiers. Use this endpoint when you have a precise content identifier and need full metadata.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "content",
+                ":contentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "idType",
+                  "value": "<string>",
+                  "description": "Type of the provided identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Comma-separated list of additional fields to include"
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "<string>",
+                  "description": "Language code for localized metadata (ISO 639-1)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contentId",
+                  "description": "(Required) Content identifier (Rovi, TMDB, or EIDR format)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dec4cf35-1402-481b-ab2f-fb7d96948e47",
+              "name": "Detailed content metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    ":contentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "idType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentId",
+                      "description": "(Required) Content identifier (Rovi, TMDB, or EIDR format)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"title\": \"string\",\n  \"type\": \"person\",\n  \"year\": 9560,\n  \"description\": \"string\",\n  \"genres\": [\n    \"string\",\n    \"string\"\n  ],\n  \"rating\": \"string\",\n  \"runtime\": 4928,\n  \"languages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"cast\": [\n    {\n      \"personId\": \"string\",\n      \"name\": \"string\",\n      \"role\": \"director\",\n      \"character\": \"string\"\n    },\n    {\n      \"personId\": \"string\",\n      \"name\": \"string\",\n      \"role\": \"director\",\n      \"character\": \"string\"\n    }\n  ],\n  \"images\": [\n    {\n      \"url\": \"string\",\n      \"type\": \"poster\",\n      \"width\": 4192,\n      \"height\": 2037,\n      \"language\": \"string\"\n    },\n    {\n      \"url\": \"string\",\n      \"type\": \"headshot\",\n      \"width\": 3494,\n      \"height\": 3192,\n      \"language\": \"string\"\n    }\n  ],\n  \"externalIds\": {\n    \"rovi\": \"string\",\n    \"tmdb\": \"string\",\n    \"eidr\": \"string\"\n  },\n  \"availableOn\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b309daf7-6dfb-4df8-9a5c-db79c77d1b5a",
+              "name": "Unauthorized - invalid or missing token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    ":contentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "idType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentId",
+                      "description": "(Required) Content identifier (Rovi, TMDB, or EIDR format)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": 1692\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71fe0647-54a2-4054-82bf-f1778cd336b2",
+              "name": "Content not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    ":contentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "idType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentId",
+                      "description": "(Required) Content identifier (Rovi, TMDB, or EIDR format)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": 1692\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ced8c561-698d-41bd-92ca-2482b1fb5168",
+          "name": "Lookup Person",
+          "request": {
+            "name": "Lookup Person",
+            "description": {
+              "content": "Retrieve detailed information about a person (actor, director, writer, etc.) including biography, filmography, and images.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "people",
+                ":personId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Additional fields to include (credits, images, biography)"
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "personId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7b161ccd-6a12-4df0-94f1-de6048809ba0",
+              "name": "Person details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "people",
+                    ":personId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "personId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"biography\": \"string\",\n  \"birthDate\": \"2007-10-28\",\n  \"deathDate\": \"2008-06-21\",\n  \"birthPlace\": \"string\",\n  \"images\": [\n    {\n      \"url\": \"string\",\n      \"type\": \"logo\",\n      \"width\": 6106,\n      \"height\": 6857,\n      \"language\": \"string\"\n    },\n    {\n      \"url\": \"string\",\n      \"type\": \"still\",\n      \"width\": 780,\n      \"height\": 2279,\n      \"language\": \"string\"\n    }\n  ],\n  \"credits\": [\n    {\n      \"contentId\": \"string\",\n      \"title\": \"string\",\n      \"role\": \"string\",\n      \"character\": \"string\"\n    },\n    {\n      \"contentId\": \"string\",\n      \"title\": \"string\",\n      \"role\": \"string\",\n      \"character\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "258a72a0-f335-49a6-97ba-584a53a58efa",
+              "name": "Content not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "people",
+                    ":personId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "personId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": 1692\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.tivo.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c0e414e6-dac5-4764-b20d-053c3bd22266",
+    "name": "TiVo Video Metadata Content Lookup API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The TiVo Video Metadata API v3 provides access to a universe of high-quality entertainment imagery and information. The HTTP-based API delivers JSON responses for TV shows, movies, episodes, and related entertainment content. Supports content search by metadata fields and precise ID-based lookup using Rovi, TMDB, and EIDR identifiers.\n\nContact Support:\n Name: TiVo Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

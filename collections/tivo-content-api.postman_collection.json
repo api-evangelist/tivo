@@ -1,0 +1,1005 @@
+{
+  "item": [
+    {
+      "id": "a1d670ea-fecb-4fc3-9477-e4a1169b5910",
+      "name": "Content",
+      "description": {
+        "content": "Search and retrieve entertainment content metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "54cef8ed-e0c5-4c7c-b0ae-22a0dce54e6e",
+          "name": "Search Content",
+          "request": {
+            "name": "Search Content",
+            "description": {
+              "content": "Search for entertainment content using a variety of metadata fields. Returns matching TV shows, movies, episodes, and other content assets. Use this endpoint when you don't have a known identifier for the content.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "content",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search query text - title, person name, or keyword"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Content type filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "genre",
+                  "value": "<string>",
+                  "description": "Genre filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "<integer>",
+                  "description": "Release year filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "<string>",
+                  "description": "Language code (ISO 639-1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Pagination offset"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Comma-separated list of additional fields to include"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "50435047-cc7b-4b6b-b35d-5a2360d477e4",
+              "name": "Successful search response with matching content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "genre",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "year",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"type\": \"person\",\n      \"year\": 8283,\n      \"description\": \"string\",\n      \"genres\": [\n        \"string\",\n        \"string\"\n      ],\n      \"rating\": \"string\",\n      \"runtime\": 5801,\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"cast\": [\n        {\n          \"personId\": \"string\",\n          \"name\": \"string\",\n          \"role\": \"writer\",\n          \"character\": \"string\"\n        },\n        {\n          \"personId\": \"string\",\n          \"name\": \"string\",\n          \"role\": \"composer\",\n          \"character\": \"string\"\n        }\n      ],\n      \"images\": [\n        {\n          \"url\": \"string\",\n          \"type\": \"logo\",\n          \"width\": 5860,\n          \"height\": 73,\n          \"language\": \"string\"\n        },\n        {\n          \"url\": \"string\",\n          \"type\": \"backdrop\",\n          \"width\": 3891,\n          \"height\": 9050,\n          \"language\": \"string\"\n        }\n      ],\n      \"externalIds\": {\n        \"rovi\": \"string\",\n        \"tmdb\": \"string\",\n        \"eidr\": \"string\"\n      },\n      \"availableOn\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"type\": \"program\",\n      \"year\": 6373,\n      \"description\": \"string\",\n      \"genres\": [\n        \"string\",\n        \"string\"\n      ],\n      \"rating\": \"string\",\n      \"runtime\": 7528,\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"cast\": [\n        {\n          \"personId\": \"string\",\n          \"name\": \"string\",\n          \"role\": \"actor\",\n          \"character\": \"string\"\n        },\n        {\n          \"personId\": \"string\",\n          \"name\": \"string\",\n          \"role\": \"composer\",\n          \"character\": \"string\"\n        }\n      ],\n      \"images\": [\n        {\n          \"url\": \"string\",\n          \"type\": \"headshot\",\n          \"width\": 8848,\n          \"height\": 7460,\n          \"language\": \"string\"\n        },\n        {\n          \"url\": \"string\",\n          \"type\": \"poster\",\n          \"width\": 9341,\n          \"height\": 4441,\n          \"language\": \"string\"\n        }\n      ],\n      \"externalIds\": {\n        \"rovi\": \"string\",\n        \"tmdb\": \"string\",\n        \"eidr\": \"string\"\n      },\n      \"availableOn\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"total\": 2356,\n  \"offset\": 1025,\n  \"limit\": 9746\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94d32dab-2159-4fe3-8643-00432fe24396",
+              "name": "Bad request - invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "genre",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "year",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": 1425\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d527f5a9-9a41-42fe-805f-5d98f6c7d3c6",
+              "name": "Unauthorized - invalid or missing token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "genre",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "year",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": 1425\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63fc4e44-020f-4844-aca4-f4e02902a608",
+              "name": "Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "genre",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "year",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": 1425\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4cfb96b6-64c0-4cd2-9b99-6395d290b062",
+          "name": "Get Content Images",
+          "request": {
+            "name": "Get Content Images",
+            "description": {
+              "content": "Retrieve high-quality entertainment imagery for a specific content item including posters, backdrops, cast photos, and promotional images.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "content",
+                ":contentId",
+                "images"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Image type filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "width",
+                  "value": "<integer>",
+                  "description": "Preferred image width in pixels"
+                },
+                {
+                  "disabled": false,
+                  "key": "height",
+                  "value": "<integer>",
+                  "description": "Preferred image height in pixels"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contentId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d2ec702a-12bb-4bba-807b-c287b46bd979",
+              "name": "List of available images",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    ":contentId",
+                    "images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "height",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"images\": [\n    {\n      \"url\": \"string\",\n      \"type\": \"headshot\",\n      \"width\": 9993,\n      \"height\": 528,\n      \"language\": \"string\"\n    },\n    {\n      \"url\": \"string\",\n      \"type\": \"still\",\n      \"width\": 8510,\n      \"height\": 2432,\n      \"language\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac8e3b04-c050-42b7-9c2c-1884452c93d8",
+              "name": "Content not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    ":contentId",
+                    "images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "height",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": 1425\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "014830ed-f112-43c7-8ae7-fcf141d5efae",
+          "name": "Get Content Seasons",
+          "request": {
+            "name": "Get Content Seasons",
+            "description": {
+              "content": "Retrieve season information for a TV series including episode counts and season-level metadata.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "content",
+                ":contentId",
+                "seasons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contentId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1e0bc395-c7bd-4a59-b479-b585864379a7",
+              "name": "Season list for the series",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    ":contentId",
+                    "seasons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"seasons\": [\n    {\n      \"seasonNumber\": 6456,\n      \"episodeCount\": 9732,\n      \"year\": 6871,\n      \"description\": \"string\"\n    },\n    {\n      \"seasonNumber\": 2650,\n      \"episodeCount\": 984,\n      \"year\": 1210,\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e90012a-40c3-4ea9-ab58-abd60e7364ef",
+              "name": "Content not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    ":contentId",
+                    "seasons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": 1425\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e4d79be4-8ace-4821-867f-293fabc7aa58",
+          "name": "Get Content Episodes",
+          "request": {
+            "name": "Get Content Episodes",
+            "description": {
+              "content": "Retrieve episode listings for a TV series or specific season with episode metadata, air dates, and descriptions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "content",
+                ":contentId",
+                "episodes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "season",
+                  "value": "<integer>",
+                  "description": "Season number to filter episodes"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contentId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "96e695c1-ed01-4fe6-9c43-bd39efed9674",
+              "name": "Episode list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    ":contentId",
+                    "episodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "season",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"episodes\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"episodeNumber\": 4943,\n      \"seasonNumber\": 6773,\n      \"airDate\": \"1993-05-08\",\n      \"description\": \"string\",\n      \"runtime\": 6280\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"episodeNumber\": 1505,\n      \"seasonNumber\": 2293,\n      \"airDate\": \"1973-04-17\",\n      \"description\": \"string\",\n      \"runtime\": 7568\n    }\n  ],\n  \"total\": 4650\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e99acce-bf91-4555-a659-17f84ce1b749",
+              "name": "Content not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    ":contentId",
+                    "episodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "season",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": 1425\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.tivo.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "62aa0929-10b0-45ad-823f-dfc5828a5d65",
+    "name": "TiVo Video Metadata Content API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The TiVo Video Metadata API v3 provides access to a universe of high-quality entertainment imagery and information. The HTTP-based API delivers JSON responses for TV shows, movies, episodes, and related entertainment content. Supports content search by metadata fields and precise ID-based lookup using Rovi, TMDB, and EIDR identifiers.\n\nContact Support:\n Name: TiVo Developer Support",
+      "type": "text/plain"
+    }
+  }
+}
