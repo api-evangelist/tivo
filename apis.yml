@@ -142,6 +142,9 @@ solutions:
   - Smart TV application development
   - Automotive in-car entertainment
 common:
+  - type: CapabilityMap
+    url: capabilities/tivo-capability-edges.yml
+    name: Tivo Business Capability Map
   - type: AgenticAccess
     url: agentic-access/tivo-agentic-access.yml
   - type: DomainSecurity
