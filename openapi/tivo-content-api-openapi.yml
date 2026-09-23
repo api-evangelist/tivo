@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: TiVo Video Metadata Content API
   description: The TiVo Video Metadata API v3 provides access to a universe of high-quality entertainment imagery and information. The HTTP-based API delivers JSON responses for TV shows, movies, episodes, and related entertainment content. Supports content search by metadata fields and precise ID-based lookup using Rovi, TMDB, and EIDR identifiers.
@@ -196,18 +196,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    RateLimited:
-      description: Too many requests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized - invalid or missing token
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     BadRequest:
       description: Bad request - invalid parameters
       content:
@@ -220,117 +208,19 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized - invalid or missing token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: Too many requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Season:
-      type: object
-      properties:
-        seasonNumber:
-          type: integer
-        episodeCount:
-          type: integer
-        year:
-          type: integer
-        description:
-          type: string
-    Episode:
-      type: object
-      properties:
-        id:
-          type: string
-        title:
-          type: string
-        episodeNumber:
-          type: integer
-        seasonNumber:
-          type: integer
-        airDate:
-          type: string
-          format: date
-        description:
-          type: string
-        runtime:
-          type: integer
-    ImageList:
-      type: object
-      properties:
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/Image'
-    Image:
-      type: object
-      properties:
-        url:
-          type: string
-        type:
-          type: string
-          enum:
-          - poster
-          - backdrop
-          - still
-          - headshot
-          - logo
-        width:
-          type: integer
-        height:
-          type: integer
-        language:
-          type: string
-    EpisodeList:
-      type: object
-      properties:
-        episodes:
-          type: array
-          items:
-            $ref: '#/components/schemas/Episode'
-        total:
-          type: integer
-    ContentSearchResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContentItem'
-        total:
-          type: integer
-        offset:
-          type: integer
-        limit:
-          type: integer
-    CastMember:
-      type: object
-      properties:
-        personId:
-          type: string
-        name:
-          type: string
-        role:
-          type: string
-          enum:
-          - actor
-          - director
-          - writer
-          - producer
-          - composer
-        character:
-          type: string
-    SeasonList:
-      type: object
-      properties:
-        seasons:
-          type: array
-          items:
-            $ref: '#/components/schemas/Season'
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        message:
-          type: string
-        code:
-          type: integer
     ContentItem:
       type: object
       properties:
@@ -391,6 +281,116 @@ components:
           type: array
           items:
             type: string
+    Season:
+      type: object
+      properties:
+        seasonNumber:
+          type: integer
+        episodeCount:
+          type: integer
+        year:
+          type: integer
+        description:
+          type: string
+    SeasonList:
+      type: object
+      properties:
+        seasons:
+          type: array
+          items:
+            $ref: '#/components/schemas/Season'
+    Episode:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        episodeNumber:
+          type: integer
+        seasonNumber:
+          type: integer
+        airDate:
+          type: string
+          format: date
+        description:
+          type: string
+        runtime:
+          type: integer
+    ContentSearchResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentItem'
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        code:
+          type: integer
+    EpisodeList:
+      type: object
+      properties:
+        episodes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Episode'
+        total:
+          type: integer
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+        type:
+          type: string
+          enum:
+          - poster
+          - backdrop
+          - still
+          - headshot
+          - logo
+        width:
+          type: integer
+        height:
+          type: integer
+        language:
+          type: string
+    ImageList:
+      type: object
+      properties:
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+    CastMember:
+      type: object
+      properties:
+        personId:
+          type: string
+        name:
+          type: string
+        role:
+          type: string
+          enum:
+          - actor
+          - director
+          - writer
+          - producer
+          - composer
+        character:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http
