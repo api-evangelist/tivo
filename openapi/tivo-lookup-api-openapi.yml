@@ -189,6 +189,23 @@ components:
                 type: string
               character:
                 type: string
+    CastMember:
+      type: object
+      properties:
+        personId:
+          type: string
+        name:
+          type: string
+        role:
+          type: string
+          enum:
+          - actor
+          - director
+          - writer
+          - producer
+          - composer
+        character:
+          type: string
     Error:
       type: object
       properties:
@@ -217,32 +234,15 @@ components:
           type: integer
         language:
           type: string
-    CastMember:
-      type: object
-      properties:
-        personId:
-          type: string
-        name:
-          type: string
-        role:
-          type: string
-          enum:
-          - actor
-          - director
-          - writer
-          - producer
-          - composer
-        character:
-          type: string
   responses:
-    NotFound:
-      description: Content not found
+    Unauthorized:
+      description: Unauthorized - invalid or missing token
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized - invalid or missing token
+    NotFound:
+      description: Content not found
       content:
         application/json:
           schema:

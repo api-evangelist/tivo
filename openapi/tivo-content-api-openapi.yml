@@ -195,31 +195,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    BadRequest:
-      description: Bad request - invalid parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Content not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized - invalid or missing token
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    RateLimited:
-      description: Too many requests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     ContentItem:
       type: object
@@ -281,24 +256,6 @@ components:
           type: array
           items:
             type: string
-    Season:
-      type: object
-      properties:
-        seasonNumber:
-          type: integer
-        episodeCount:
-          type: integer
-        year:
-          type: integer
-        description:
-          type: string
-    SeasonList:
-      type: object
-      properties:
-        seasons:
-          type: array
-          items:
-            $ref: '#/components/schemas/Season'
     Episode:
       type: object
       properties:
@@ -317,19 +274,41 @@ components:
           type: string
         runtime:
           type: integer
-    ContentSearchResponse:
+    Season:
       type: object
       properties:
-        results:
+        seasonNumber:
+          type: integer
+        episodeCount:
+          type: integer
+        year:
+          type: integer
+        description:
+          type: string
+    SeasonList:
+      type: object
+      properties:
+        seasons:
           type: array
           items:
-            $ref: '#/components/schemas/ContentItem'
-        total:
-          type: integer
-        offset:
-          type: integer
-        limit:
-          type: integer
+            $ref: '#/components/schemas/Season'
+    CastMember:
+      type: object
+      properties:
+        personId:
+          type: string
+        name:
+          type: string
+        role:
+          type: string
+          enum:
+          - actor
+          - director
+          - writer
+          - producer
+          - composer
+        character:
+          type: string
     Error:
       type: object
       properties:
@@ -347,6 +326,19 @@ components:
           items:
             $ref: '#/components/schemas/Episode'
         total:
+          type: integer
+    ContentSearchResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentItem'
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
           type: integer
     Image:
       type: object
@@ -374,23 +366,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Image'
-    CastMember:
-      type: object
-      properties:
-        personId:
-          type: string
-        name:
-          type: string
-        role:
-          type: string
-          enum:
-          - actor
-          - director
-          - writer
-          - producer
-          - composer
-        character:
-          type: string
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or missing token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: Too many requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Content not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http
