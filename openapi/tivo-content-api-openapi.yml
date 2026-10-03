@@ -256,6 +256,31 @@ components:
           type: array
           items:
             type: string
+    Season:
+      type: object
+      properties:
+        seasonNumber:
+          type: integer
+        episodeCount:
+          type: integer
+        year:
+          type: integer
+        description:
+          type: string
+    ImageList:
+      type: object
+      properties:
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+    SeasonList:
+      type: object
+      properties:
+        seasons:
+          type: array
+          items:
+            $ref: '#/components/schemas/Season'
     Episode:
       type: object
       properties:
@@ -274,24 +299,15 @@ components:
           type: string
         runtime:
           type: integer
-    Season:
+    EpisodeList:
       type: object
       properties:
-        seasonNumber:
-          type: integer
-        episodeCount:
-          type: integer
-        year:
-          type: integer
-        description:
-          type: string
-    SeasonList:
-      type: object
-      properties:
-        seasons:
+        episodes:
           type: array
           items:
-            $ref: '#/components/schemas/Season'
+            $ref: '#/components/schemas/Episode'
+        total:
+          type: integer
     CastMember:
       type: object
       properties:
@@ -318,28 +334,6 @@ components:
           type: string
         code:
           type: integer
-    EpisodeList:
-      type: object
-      properties:
-        episodes:
-          type: array
-          items:
-            $ref: '#/components/schemas/Episode'
-        total:
-          type: integer
-    ContentSearchResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContentItem'
-        total:
-          type: integer
-        offset:
-          type: integer
-        limit:
-          type: integer
     Image:
       type: object
       properties:
@@ -359,20 +353,20 @@ components:
           type: integer
         language:
           type: string
-    ImageList:
+    ContentSearchResponse:
       type: object
       properties:
-        images:
+        results:
           type: array
           items:
-            $ref: '#/components/schemas/Image'
+            $ref: '#/components/schemas/ContentItem'
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
   responses:
-    Unauthorized:
-      description: Unauthorized - invalid or missing token
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     BadRequest:
       description: Bad request - invalid parameters
       content:
@@ -387,6 +381,12 @@ components:
             $ref: '#/components/schemas/Error'
     NotFound:
       description: Content not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized - invalid or missing token
       content:
         application/json:
           schema:

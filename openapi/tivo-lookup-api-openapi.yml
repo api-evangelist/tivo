@@ -155,6 +155,32 @@ components:
           type: array
           items:
             type: string
+    CastMember:
+      type: object
+      properties:
+        personId:
+          type: string
+        name:
+          type: string
+        role:
+          type: string
+          enum:
+          - actor
+          - director
+          - writer
+          - producer
+          - composer
+        character:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        code:
+          type: integer
     Person:
       type: object
       properties:
@@ -189,32 +215,6 @@ components:
                 type: string
               character:
                 type: string
-    CastMember:
-      type: object
-      properties:
-        personId:
-          type: string
-        name:
-          type: string
-        role:
-          type: string
-          enum:
-          - actor
-          - director
-          - writer
-          - producer
-          - composer
-        character:
-          type: string
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        message:
-          type: string
-        code:
-          type: integer
     Image:
       type: object
       properties:
@@ -235,14 +235,14 @@ components:
         language:
           type: string
   responses:
-    Unauthorized:
-      description: Unauthorized - invalid or missing token
+    NotFound:
+      description: Content not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Content not found
+    Unauthorized:
+      description: Unauthorized - invalid or missing token
       content:
         application/json:
           schema:
