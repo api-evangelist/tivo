@@ -95,6 +95,40 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    Person:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        biography:
+          type: string
+        birthDate:
+          type: string
+          format: date
+        deathDate:
+          type: string
+          format: date
+        birthPlace:
+          type: string
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+        credits:
+          type: array
+          items:
+            type: object
+            properties:
+              contentId:
+                type: string
+              title:
+                type: string
+              role:
+                type: string
+              character:
+                type: string
     ContentItem:
       type: object
       properties:
@@ -155,23 +189,6 @@ components:
           type: array
           items:
             type: string
-    CastMember:
-      type: object
-      properties:
-        personId:
-          type: string
-        name:
-          type: string
-        role:
-          type: string
-          enum:
-          - actor
-          - director
-          - writer
-          - producer
-          - composer
-        character:
-          type: string
     Error:
       type: object
       properties:
@@ -181,40 +198,6 @@ components:
           type: string
         code:
           type: integer
-    Person:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        biography:
-          type: string
-        birthDate:
-          type: string
-          format: date
-        deathDate:
-          type: string
-          format: date
-        birthPlace:
-          type: string
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/Image'
-        credits:
-          type: array
-          items:
-            type: object
-            properties:
-              contentId:
-                type: string
-              title:
-                type: string
-              role:
-                type: string
-              character:
-                type: string
     Image:
       type: object
       properties:
@@ -234,15 +217,32 @@ components:
           type: integer
         language:
           type: string
+    CastMember:
+      type: object
+      properties:
+        personId:
+          type: string
+        name:
+          type: string
+        role:
+          type: string
+          enum:
+          - actor
+          - director
+          - writer
+          - producer
+          - composer
+        character:
+          type: string
   responses:
-    NotFound:
-      description: Content not found
+    Unauthorized:
+      description: Unauthorized - invalid or missing token
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized - invalid or missing token
+    NotFound:
+      description: Content not found
       content:
         application/json:
           schema:
