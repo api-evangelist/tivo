@@ -95,40 +95,23 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    Person:
+    CastMember:
       type: object
       properties:
-        id:
+        personId:
           type: string
         name:
           type: string
-        biography:
+        role:
           type: string
-        birthDate:
+          enum:
+          - actor
+          - director
+          - writer
+          - producer
+          - composer
+        character:
           type: string
-          format: date
-        deathDate:
-          type: string
-          format: date
-        birthPlace:
-          type: string
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/Image'
-        credits:
-          type: array
-          items:
-            type: object
-            properties:
-              contentId:
-                type: string
-              title:
-                type: string
-              role:
-                type: string
-              character:
-                type: string
     ContentItem:
       type: object
       properties:
@@ -189,15 +172,6 @@ components:
           type: array
           items:
             type: string
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        message:
-          type: string
-        code:
-          type: integer
     Image:
       type: object
       properties:
@@ -217,32 +191,58 @@ components:
           type: integer
         language:
           type: string
-    CastMember:
+    Person:
       type: object
       properties:
-        personId:
+        id:
           type: string
         name:
           type: string
-        role:
+        biography:
           type: string
-          enum:
-          - actor
-          - director
-          - writer
-          - producer
-          - composer
-        character:
+        birthDate:
           type: string
+          format: date
+        deathDate:
+          type: string
+          format: date
+        birthPlace:
+          type: string
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+        credits:
+          type: array
+          items:
+            type: object
+            properties:
+              contentId:
+                type: string
+              title:
+                type: string
+              role:
+                type: string
+              character:
+                type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        code:
+          type: integer
   responses:
-    Unauthorized:
-      description: Unauthorized - invalid or missing token
+    NotFound:
+      description: Content not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Content not found
+    Unauthorized:
+      description: Unauthorized - invalid or missing token
       content:
         application/json:
           schema:
